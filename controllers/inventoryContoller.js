@@ -2,16 +2,24 @@ const Fruit = require('../models/fruit')
 const Category = require('../models/category')
 
 const renderInventoryList = async (req, res) =>{
-    const fruits = await Fruit.find()
-    res.render('inventory', {fruits: fruits})
+    try {
+        const fruits = await Fruit.find()
+        res.render('inventory', {fruits: fruits})
+    } catch (error) {
+       console.log(error); 
+    }   
 }
 
 const renderInventoryEdit = async (req, res) =>{
     let password = req.query.password
     if(passwordCheck(password)){
-        const fruit = await Fruit.findById(req.params.id)
-        const categories = await Category.find()
-        res.render('edit', {fruit: fruit, categories: categories})
+        try {
+            const fruit = await Fruit.findById(req.params.id)
+            const categories = await Category.find()
+            res.render('edit', {fruit: fruit, categories: categories})
+        } catch (error) {
+            console.log(error);
+        }
     }
     else{
         let destinationURL = "/inventory/edit/" + req.params.id
@@ -23,8 +31,13 @@ const renderInventoryEdit = async (req, res) =>{
 const renderInventoryCreate = async (req, res) =>{
     let password = req.query.password
     if(passwordCheck(password)){
-        const categories = await Category.find()
-    res.render('item-create', {categories: categories})
+        try {
+            const categories = await Category.find()
+            res.render('item-create', {categories: categories})
+        } catch (error) {
+            console.log(error);
+        }
+    
     }
     else{
         let destinationURL = "/inventory/create"
@@ -34,15 +47,25 @@ const renderInventoryCreate = async (req, res) =>{
 }
 
 const renderInventorySpecific = async (req, res) =>{
-    const fruit = await Fruit.findById(req.params.id)
-    res.render('inventory-specific', {fruit:fruit})
+    try {
+        const fruit = await Fruit.findById(req.params.id)
+        res.render('inventory-specific', {fruit:fruit})
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
 const deleteInventoryItem = async (req, res) =>{
     let password = req.query.password
     if(passwordCheck(password)){
-        await Fruit.findByIdAndDelete(req.params.id)
-        res.redirect('/')
+        try {
+            await Fruit.findByIdAndDelete(req.params.id)
+            res.redirect('/')
+        } catch (error) {
+           console.log(error); 
+        }
+        
     }
     else{
         let urlID = "/inventory/delete/"+req.params.id
@@ -86,34 +109,39 @@ const inventoryCreate =  async (req, res) =>  {
 };
 
 const editInventory = async (req, res) => {
-    let fruit = await Fruit.findById(req.params.id)
-    if(req.body.name !== ''){
-        fruit.name = req.body.name
-    }
-    if(req.body.price !== ''){
-        fruit.price = req.body.price
-    }
-    if(req.body.imgURL !== ''){
-        fruit.imgURL = req.body.imgURL
-    }
-    if(req.body.description !== 'Enter text here...'){
-        fruit.description = req.body.description
-    }
-    if(req.body.category !== ''){
-        fruit.category = req.body.category
-    }
-    if(req.body.stock !== ''){
-        fruit.stock = req.body.stock
-    }
     try {
-        // waits for operation to complete before redirection
-        fruit = await fruit.save()
-        res.redirect('/') 
+        let fruit = await Fruit.findById(req.params.id)
+        if(req.body.name !== ''){
+            fruit.name = req.body.name
+        }
+        if(req.body.price !== ''){
+            fruit.price = req.body.price
+        }
+        if(req.body.imgURL !== ''){
+            fruit.imgURL = req.body.imgURL
+        }
+        if(req.body.description !== 'Enter text here...'){
+            fruit.description = req.body.description
+        }
+        if(req.body.category !== ''){
+            fruit.category = req.body.category
+        }
+        if(req.body.stock !== ''){
+            fruit.stock = req.body.stock
+        }
+        try {
+            // waits for operation to complete before redirection
+            fruit = await fruit.save()
+            res.redirect('/') 
+        } catch (error) {
+            // renders create page and logs error, if there is one
+            res.render('edit', {fruit: fruit})
+            console.log(error);
+        }
     } catch (error) {
-        // renders create page and logs error, if there is one
-        res.render('edit', {fruit: fruit})
         console.log(error);
     }
+    
 }
 
 const inventoryPassword = (req, res) =>{

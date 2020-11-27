@@ -2,9 +2,13 @@ const Fruit = require('../models/fruit')
 const Category = require('../models/category')
 
 const renderCategoryList = async (req, res) =>{
-    const categories = await Category.find()
-    const fruits = await Fruit.find()
-    res.render('category', {categories: categories, fruits: fruits })
+    try {
+        const categories = await Category.find()
+        const fruits = await Fruit.find()
+        res.render('category', {categories: categories, fruits: fruits })
+    } catch (error) {
+       console.log(error); 
+    }
 }
 
 const renderCategoryCreate = (req, res) =>{
@@ -22,8 +26,13 @@ const renderCategoryCreate = (req, res) =>{
 const renderCategorySpec = async (req, res) =>{
     // removes '/' and decodes url (%, etc) for matching in the view file
     const urlTidy = decodeURIComponent(req.url.substring(1))
-    const fruits = await Fruit.find()
-    res.render('category-specific-inventory', {fruits: fruits, filteredCategory: urlTidy})
+    try {
+        const fruits = await Fruit.find()
+        res.render('category-specific-inventory', {fruits: fruits, filteredCategory: urlTidy})
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
 
 const categoryCreate = async (req, res) =>{
@@ -47,8 +56,13 @@ const categoryCreate = async (req, res) =>{
 const deleteCategory = async (req, res) =>{
     let password = req.query.password
     if(passwordCheck(password)){
-        await Category.findByIdAndDelete(req.params.id)
-        res.redirect('/category')
+        try {
+            await Category.findByIdAndDelete(req.params.id)
+            res.redirect('/category') 
+        } catch (error) {
+           console.log(error); 
+        }
+        
     }
     else{
         let urlID = "/category/delete/"+req.params.id
@@ -57,7 +71,7 @@ const deleteCategory = async (req, res) =>{
     
 }
 
-const categoryPasswordDelete = async (req, res) =>{
+const categoryPasswordDelete = (req, res) =>{
     let urlID = "/category/delete/"+req.params.id
     res.render('password-delete', {urlID: urlID, invalidPassword: ""})
 }
