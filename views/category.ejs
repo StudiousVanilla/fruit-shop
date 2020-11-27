@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Category</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><a href="/">Inventory</a> - Categories </h1>
+
+    <h3 class="heading-info"> 
+      <a href="/inventory/password/create">Create new item</a> - 
+      <a href="/category/password/create">Create new category</a> 
+    </h3>
+
+  
+    <div class="categories-container">
+      <% categories.forEach(category => { %>
+        <div class="category">
+
+          <div>
+          <a class="" href="/category/<%=category.name%>"><%=category.name%></a>
+          -
+          <span>
+            <%/* returns the length of a filterd 'fruits' array baed on the nu,ber of fruits with a category matching the category within th forEach loop*/  %> 
+            <%=((fruits.filter((fruit)=> fruit.category === category.name)).length)%>
+          </span>
+        </div>
+
+          <div class="category-edit-delete-container">
+            <form action="/category/password/<%=category.id%> " method="GET">
+              <button class="delete-btn category-delete-btn" type="submit">Delete</button>
+            </form>
+          </div>
+        </div> 
+      <% }) %> 
+    </div>
+  </body>
+</html>

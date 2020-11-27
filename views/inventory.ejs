@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Inventory - <a href="/category">Categories</a></h1>
+
+    <h3 class="heading-info"> 
+      <a href="/inventory/password/create">Create new item</a> - 
+      <a href="/category/password/create">Create new category</a> 
+    </h3>
+    
+    <% fruits.forEach(fruit => { %>
+      <div class="item-container">
+        <div class="item-stock">
+          <p>Stock: <%=fruit.stock%></p>
+        </div>
+        <div class="item-info">
+            <a href="/inventory/<%=fruit.id%>">
+              <p><%=fruit.name%></p>
+            </a>
+            <p class="price">€<%=fruit.price%></p>
+        </div>
+        <div class="item-description">
+            <img src=<%=fruit.imgURL%> alt='<%=fruit.category%> '>
+            <p><%=fruit.description%></p>
+            <a href="/category/<%=fruit.category%> " class="item-category"><%=fruit.category%></a>
+        </div>
+        <div class="edit-delete-container">
+
+
+
+          <form action="inventory/password/edit/<%=fruit.id%>" method="GET">
+            <button class="item-edit-link-btn" type="submit">
+              <span class="item-edit-link" href="">edit</span>
+            </button>
+          </form>
+
+
+          <form action="inventory/password/delete/<%=fruit.id%>" method="Get">
+            <button class="delete-btn" type="submit">Delete</button>
+          </form>
+
+        </div>
+      </div>
+   <% }); %>
+
+  </body>
+</html>

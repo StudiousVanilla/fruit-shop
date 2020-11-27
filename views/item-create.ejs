@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Create Item</title>
+</head>
+<body>
+  <h1><a href="/inventory">Inventory</a> - <a href="/category">Categories</a></h1>
+
+  <h3 class="heading-info"> 
+    Create new item - 
+    <a href="/category/password/create">Create new category</a> 
+  </h3>
+
+    <div class="item-edit-container">
+      <% /* action triggers method type at action address*/ %> 
+        <form action="/inventory/create" method="POST" class="item-edit" id="item-edit-form">
+          <div class="item-info-edit">
+            <label for="name">Name:</label>
+            <input type="text" name="name"  required>
+            <label for="price">Price:</label>
+            <input type="number" name="price"  required>
+          </div>
+          <div class="item-description-edit">
+              <div class="image-url-edit-container">
+                <label for="imgURL">Image-URL:</label>
+                <input type="text" name="imgURL">
+              </div>
+              <div class="item-description-edit-container">
+                <label for="description">Description:</label>
+                <textarea name="description" form="item-edit-form" class="item-description-edit-area" maxlength="360" >Enter text here...</textarea>
+              </div>
+          </div>
+          <div class="item-category-select">
+            <label for="category">Choose a category</label>
+            <select name="category" id="item-edit-form" required>
+              <option value="">-</option>
+              <% categories.forEach(category => { %>
+                <option value="<%=category.name%>"><%=category.name%></option>
+              <% });  %> 
+            </select>
+          </div>
+          <div>
+            <label for="stock">Stock</label>
+            <input class="item-edit-stock" name="stock" type="number" >
+          </div>
+          <button type="submit" class="item-edit-btn">Submit</button>
+        </form>
+      </div>
+</body>
+</html>

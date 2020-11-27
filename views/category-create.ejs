@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Create a category</title>
+</head>
+<body>
+
+    <h1>
+        <a href="/inventory">Inventory</a> - <a href="/category">Categories</a>
+    </h1>
+
+    <h3 class="heading-info"> 
+        <a href="/inventory/create">Create new item</a> 
+        - Create new category
+      </h3>
+
+    <div class="category-create-container">
+        <form class="category-create-form" action="/category/create" method="POST" >
+            <div class="category-form-input">
+                <label for="name">New Category:</label>
+                <input name="name" type="text" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

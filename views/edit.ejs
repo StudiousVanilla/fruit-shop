@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> <a href="/inventory">Inventory</a> - <a href="/category">Categories</a></h1>
+
+    <div class="item-container item-container-edit-page">
+      <div class="item-stock">
+        <p>Stock: <%=fruit.stock%></p>
+      </div>
+      <div class="item-info">
+          <a href="/inventory/<%=fruit.id%>">
+            <p><%=fruit.name%></p>
+          </a>
+          <p>€<%=fruit.price%></p>
+      </div>
+      <div class="item-description">
+          <img src=<%=fruit.imgURL%> alt="">
+          <p><%=fruit.description%></p>
+          <a href="/category/<%=fruit.category%> " class="item-category"><%=fruit.category%></a>
+      </div>
+      <div class="edit-delete-container">
+        <form action="/inventory/<%=fruit.id%>?_method=DELETE" method="POST">
+          <button class="delete-btn" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="item-edit-container">
+      <% /* action triggers method type at action address*/ %> 
+      <form action="/inventory/edit/<%=fruit.id%>?_method=PUT" method="POST" class="item-edit" id="item-edit-form">
+          <div class="item-info-edit">
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            <label for="price">Price:</label>
+            <input type="number" name="price">
+          </div>
+          <div class="item-description-edit">
+              <div class="image-url-edit-container">
+                <label for="imgURL">Image-URL:</label>
+                <input type="text" name="imgURL">
+              </div>
+              <div class="item-description-edit-container">
+                <label for="description">Description:</label>
+                <textarea name="description" form="item-edit-form" class="item-description-edit-area" maxlength="360" >Enter text here...</textarea>
+              </div>
+          </div>
+          <div class="item-category-select">
+            <label for="category">Choose a category</label>
+            <select name="category" id="item-edit-form">
+              <option value="">-</option>
+              <% categories.forEach(category => { %>
+                <option value="<%=category.name%>"><%=category.name%></option>
+              <% });  %> 
+            </select>
+          </div>
+          <div>
+            <label for="stock">Stock</label>
+            <input class="item-edit-stock" name="stock" type="number" >
+          </div>
+          <button type="submit" class="item-edit-btn">Submit</button>
+        </form>
+      </div>
+
+  </body>
+</html>

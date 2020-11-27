@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><a href="/">Inventory</a> - <a href="/category">Categories</a></h1>
+
+    <h3 class="heading-info"> 
+      <a href="/inventory/password/create">Create new item</a> - 
+      <a href="/category/password/create">Create new category</a> 
+    </h3>
+    
+      <div class="item-container">
+        <div class="item-stock">
+          <p>Stock: <%=fruit.stock%></p>
+        </div>
+        <div class="item-info">
+            <p><%=fruit.name%></p>
+            <p>€<%=fruit.price%></p>
+        </div>
+        <div class="item-description">
+            <img src=<%=fruit.imgURL%> alt="">
+            <p><%=fruit.description%></p>
+            <a href="/category/<%=fruit.category%>" class="item-category"><%=fruit.category%></a>
+        </div>
+        <div class="edit-delete-container">
+          <button class="item-edit-link-btn">
+            <a class="item-edit-link" href="/inventory/edit/<%=fruit.id%>">edit</a>
+          </button>
+          <form action="/inventory/<%=fruit.id%>?_method=DELETE" method="POST">
+            <button class="delete-btn" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+  </body>
+</html>
