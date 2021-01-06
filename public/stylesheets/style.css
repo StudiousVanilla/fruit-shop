@@ -541,7 +541,67 @@ margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 750px) {
+
   body{
-    background-color: red;
+    padding: 0;
   }
+
+  h1{
+    font-size: 1.8em;
+    padding: 10px;
+  }
+
+  .heading-info{
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  .item-container{
+    height: 600px;
+    margin-bottom: 30px;
+    border-bottom: 0.5px dotted rgb(228, 224, 224);
+  }
+
+  .categories-container{
+    padding-top: 100px;
+  }
+
+  .item-stock{
+    width: fit-content;
+    align-items: flex-start;
+  }
+
+  .item-info{
+    margin-left: -12%;
+  }
+
+  .fruit-name{
+    width: fit-content;
+    padding-right: 10px;
+    font-size: 0.85em;
+  }
+
+  .price{
+    padding: 0;
+  }
+
+  .item-description{
+    height: fit-content;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    margin: -30px auto 20px auto;
+    font-size: 1em;
+  }
+
+  .item-description img{
+    transform: scale(0.7);
+  }
+
+  .edit-delete-container{
+    position:static;
+    height: fit-content;
+    top: 100%;
+  }
+
 }
