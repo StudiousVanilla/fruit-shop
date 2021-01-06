@@ -153,6 +153,7 @@ a {
 
 .item-edit-container{
 height: 80vh;
+width: 90%;
 align-items: center;
 color: grey
 }
@@ -239,7 +240,8 @@ margin-bottom: 50px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 15vh;
+  margin: 10vh auto;
+  padding-top: 100px;
   font-size: 5vh;
 }
 
@@ -260,10 +262,13 @@ margin-bottom: 50px;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  margin-right: 30%;
-  margin-left: -60%;
+  margin: 0 20px;
   font-size: 2vh;
   color: black;
+}
+
+.category-edit-delete-container form{
+  margin: 0 20px;
 }
 
 .category-edit-btn{
@@ -317,6 +322,7 @@ margin-bottom: 50px;
 
 .category-form-input input{
   width: 60%;
+  margin-left: 10px;
 }
 
 .invalid-password{
@@ -327,4 +333,209 @@ margin-bottom: 50px;
   font-family: monospace;
   font-weight: 200;
   color: red;
+}
+
+
+@media only screen and (max-width: 1250px) {
+  body {
+    padding: 20px;
+  }
+
+  .heading-info{
+    padding: 3vh 0px;
+    margin-bottom: -60px;
+  }
+
+  .item-container{
+    width: 80%;
+  }
+
+  .item-category{
+    position: relative;
+    top: 20%;
+  }
+
+  .categories-container{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10vh 20px;
+    padding-top: 30px;
+    font-size: 3em;
+  }
+  
+  .category{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .category-edit-delete-container{
+    margin: 0;
+  }
+
+  .categories-container{
+    width: 100%;
+    margin: 150px 0;
+  }
+
+  .password-h{
+    font-size: 1em;
+  }
+
+  .category-create-container{
+    width: 100%;
+  }
+
+  .category-create-form{
+    width: 100%;
+  }
+
+  .category-form-input label{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .item-edit-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .item-edit{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item-info-edit, .item-description-edit, .item-category-select{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-url-edit-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .item-info-edit, .item-description-edit, .item-category-select input{
+    margin-bottom: 20px;
+  }
+
+  .item-category-select{
+    margin-bottom: 20px;
+  }
+
+  .item-edit-stock{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .item-edit-btn{
+    width: fit-content;
+  }
+
+  .create-heading{
+    font-size: 0.85em;
+  }
+
+  .category-form-input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media only screen and (max-width: 1050px) {
+  .item-container{
+    width: 90%;
+    margin: 5vh 10px 20vh 10px;
+  }
+
+  .item-category{
+    top: 30%;
+  }
+
+  .item-info{
+    justify-content: space-between;
+  }
+
+  .fruit-name{
+    width: 100%;
+  }
+  
+  .price{
+    padding-right: 50px;
+  }
+
+  .description{
+    font-size: 0.85em;
+  }
+
+}
+
+
+@media only screen and (max-width: 850px) {
+
+  .item-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+    "stock info info"
+    "desc desc desc"
+    "desc desc desc"
+    "btn btn btn";
+  }
+
+  .item-stock, .item-info, .item-description, .edit-delete-container{
+    position: static;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 1em;
+  }
+
+  .item-stock{
+    grid-area: stock;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-info{
+    grid-area: info;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.6em;
+  }
+
+  .fruit-name{
+    width: 90%;
+  }
+
+  .item-description{
+    grid-area: desc;
+    font-size: 0.75em;
+  }
+
+  .item-category{
+    position: static;
+    font-size: 1.15em;
+  }
+
+  .edit-delete-container{
+    grid-area: btn;
+  }
 }

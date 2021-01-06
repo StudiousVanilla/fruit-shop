@@ -18,14 +18,14 @@
           <p>Stock: <%=fruit.stock%></p>
         </div>
         <div class="item-info">
-            <a href="/inventory/<%=fruit.id%>">
+            <a class="fruit-name" href="/inventory/<%=fruit.id%>">
               <p><%=fruit.name%></p>
             </a>
             <p class="price">€<%=fruit.price%></p>
         </div>
         <div class="item-description">
             <img src=<%=fruit.imgURL%> alt='<%=fruit.category%> '>
-            <p><%=fruit.description%></p>
+            <p class="description"><%=fruit.description%></p>
             <a href="/category/<%=fruit.category%> " class="item-category"><%=fruit.category%></a>
         </div>
         <div class="edit-delete-container">
