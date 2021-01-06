@@ -9,7 +9,7 @@ The web app uses the following technologies:
 - nodemon to assist in development
 - Heroku
 
-This backend application as an inventory management app for a fictional fruit store.
+This backend application is an inventory management app for a fictional fruit store.
 
 **The password to gain access to certain pages is "fruity"**
 
