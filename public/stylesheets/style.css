@@ -539,3 +539,9 @@ margin-bottom: 50px;
     grid-area: btn;
   }
 }
+
+@media only screen and (max-width: 750px) {
+  body{
+    background-color: red;
+  }
+}
