@@ -34,7 +34,8 @@
                   <button class="item-edit-link-btn">
                     <a class="item-edit-link" href="/inventory/edit/<%=fruit.id%>">edit</a>
                   </button>
-                  <form action="/inventory/<%=fruit.id%>?_method=DELETE" method="POST">
+                  <!-- Need methos override here to delete-->
+                  <form action="/inventory/password/delete/<%=fruit.id%>" method="GET">
                     <button class="delete-btn" type="submit">Delete</button>
                   </form>
                 </div>

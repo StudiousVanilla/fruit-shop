@@ -25,7 +25,7 @@
           <a href="/category/<%=fruit.category%> " class="item-category"><%=fruit.category%></a>
       </div>
       <div class="edit-delete-container">
-        <form action="/inventory/<%=fruit.id%>?_method=DELETE" method="POST">
+        <form action="/inventory/password/delete/<%=fruit.id%>" method="GET">
           <button class="delete-btn" type="submit">Delete</button>
         </form>
       </div>
