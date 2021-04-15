@@ -19,4 +19,4 @@ Link to live demo - https://studiousvanilla-fruit-shop.herokuapp.com/inventory
 
 [![Screenshot-2021-01-07-at-14-35-28.png](https://i.postimg.cc/13d9Y1SY/Screenshot-2021-01-07-at-14-35-28.png)](https://postimg.cc/rDSXKbKS)
 
-Made by Oisín Byrne - 2020 - https://studiousvanilla.github.io/portfolio/
+Made by Oisín Byrne - 2020 - https://www.oisinbyrne.me/
